@@ -21,5 +21,3 @@ app.use('/note', note);
 server.listen(5000, () => {
   console.log("Socket.io server running on port 5000");
 });
-
-module.exports = { io, emitNewNote }; 

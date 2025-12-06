@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Real-time Notes</title>
+  <script src="https://cdn.socket.io/4.6.1/socket.io.min.js"></script>
+</head>
+<body>
+  <h2>Real-time Notes Notifications</h2>
+  <ul id="notesList"></ul>
+
+  <script>
+    const socket = io("http://localhost:5000");
+
+    socket.on("newNote", (data) => {
+      console.log(`${data.user} created a new note: ${data.title}`);
+
+      const li = document.createElement("li");
+      li.textContent = `${data.user} created a new note: ${data.title}`;
+      document.getElementById("notesList").appendChild(li);
+    });
+  </script>
+</body>
+</html>
